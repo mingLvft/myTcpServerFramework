@@ -47,9 +47,9 @@ func (dp *DataPack) Pack(msg ziface.IMessage) ([]byte, error) {
 }
 
 // 拆包方法 （将包的Head信息读出来）之后再更具head信息里的data的长度，再进行一次读
-func (dp *DataPack) Unpack([]byte) (ziface.IMessage, error) {
-	// 创建一个从输入二进制数据的ioReader
-	dataBuff := bytes.NewReader([]byte{})
+func (dp *DataPack) Unpack(binaryData []byte) (ziface.IMessage, error) {
+	// 创建一个从输入二进制数据读取的ioReader
+	dataBuff := bytes.NewReader(binaryData)
 
 	// 只解压head信息，得到dataLen和MsgID
 	msg := &Message{}
